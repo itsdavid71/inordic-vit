@@ -93,12 +93,37 @@ nav .nav-link:hover {
   right: 0;
 }
 
+.slick-next:before,
+.slick-prev:before {
+  display: none !important;
+}
+
 .slick-next {
   right: 15px !important;
+  background: url("../img/slide-arrow.png") center center/contain no-repeat;
+  padding: 10px !important;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  opacity: 0.5;
+}
+
+.slick-next:active, .slick-next:focus, .slick-next:hover {
+  background: url("../img/slide-arrow.png") center center/contain no-repeat;
+  opacity: 1;
 }
 
 .slick-prev {
   left: 15px !important;
+  background: url("../img/slide-arrow.png") center center/contain no-repeat;
+  padding: 10px !important;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  opacity: 0.5;
+}
+
+.slick-prev:active, .slick-prev:focus, .slick-prev:hover {
+  background: url("../img/slide-arrow.png") center center/contain no-repeat;
+  opacity: 1;
 }
 
 .screen-3 {
@@ -196,13 +221,14 @@ nav .nav-link:hover {
 
 h2 {
   font-size: 36px;
-  padding: 60px 0;
+  padding: 20px 0;
+  margin-top: 20px;
   text-transform: uppercase;
   font-weight: 800;
   text-align: center;
   color: #3a0e59;
   position: relative;
-  z-index: 1;
+  z-index: 5;
 }
 
 .teacher-items {
@@ -400,6 +426,7 @@ footer nav {
   h2::before {
     content: "";
     position: absolute;
+    z-index: -1;
     background: url("../img/arrow.png") left center/contain no-repeat;
     padding: 40px;
     left: -40px;
@@ -453,7 +480,7 @@ footer nav {
             justify-content: center;
   }
   .project-items .project-item {
-    margin: 0 10px;
+    margin: 10px;
     width: 100%;
     max-width: 300px;
     text-align: center;

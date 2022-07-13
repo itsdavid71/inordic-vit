@@ -17,6 +17,7 @@ function init() {
     slidesToScroll: 2,
     rows: 2,
     dots: true,
+    arrows: true,
 
     responsive: [
       {
@@ -24,7 +25,7 @@ function init() {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          arrows: false,
+          arrows: true,
           infinite: true,
           dots: true,
         },
@@ -33,19 +34,20 @@ function init() {
         breakpoint: 768,
         settings: {
           dots: true,
+          arrows: true,
           slidesToShow: 2,
-          arrows: false,
           slidesToScroll: 2,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          dots: true,
-          arrows: false,
+          dots: false,
+          arrows: true,
           slidesToShow: 1,
           slidesToScroll: 1,
           rows: 1,
+          slidesPerRow: 1,
         },
       },
       // You can unslick at a given breakpoint now by adding:
