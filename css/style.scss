@@ -10,8 +10,13 @@
   border: none;
 }
 
+body {
+  max-width: 1800px;
+  margin: 0 auto;
+  position: relative;
+}
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 nav {
@@ -26,12 +31,19 @@ nav {
     margin-right: 25px;
     font-weight: 800;
     text-decoration: none;
+    padding: 5px 10px;
     text-transform: uppercase;
+    transition: 0.3s;
+    border-radius: 100px;
+    &:hover {
+      background: var(--main);
+      color: #fff;
+    }
   }
-  .nav-icon {
-    background: url("../img/cp_icon.png") center center / contain no-repeat;
-    padding: 10px;
-  }
+}
+.nav-icon {
+  background: url("../img/cp_icon.png") center center / contain no-repeat;
+  padding: 10px;
 }
 .logo {
   background: url("../img/logo.svg") center center / contain no-repeat;
@@ -43,15 +55,15 @@ nav {
 }
 
 section {
-  min-height: 100vh;
+  // min-height: 100vh;
 }
 
 .screen-1 {
   background: url("../img/first-screen.png") right center / contain no-repeat;
 }
 .screen-2 {
-  background: url("../img/second-screen.png") top center / contain no-repeat;
-  background-size: 100%;
+  background: url("../img/second-screen.png") top center / cover no-repeat;
+  // background-size: 100%;
   position: relative;
   &::before {
     content: "";
@@ -76,10 +88,17 @@ section {
   }
 }
 
+.slick-next {
+  right: 15px !important;
+}
+.slick-prev {
+  left: 15px !important;
+}
 .screen-3 {
   background: url("../img/third-screen.png") top center / contain no-repeat;
   background-size: 100%;
   position: relative;
+  padding: 50px 0;
   &::before {
     content: "";
     position: absolute;
@@ -171,7 +190,11 @@ h2 {
   .teacher-item {
     height: fit-content;
     margin-right: 75px;
-    max-width: 250px;
+    border: 1px solid rgba(134, 134, 134, 0.2);
+    cursor: pointer;
+    max-width: 350px;
+    border-radius: 10px;
+
     width: 33%;
     margin-bottom: 20px;
     padding: 20px;
@@ -179,12 +202,13 @@ h2 {
     transition: 0.3s;
     &:hover {
       background: #fff;
-      border-radius: 10px;
       box-shadow: 0 0 50px rgba(0, 0, 0, 0.15);
     }
     .teacher-image {
       img {
         width: 100%;
+        height: 300px;
+        object-fit: cover;
         border-radius: 10px;
       }
     }
@@ -195,6 +219,7 @@ h2 {
     }
     .teacher-description {
       font-size: 16px;
+      font-weight: 500;
     }
   }
 }
@@ -204,8 +229,11 @@ h2 {
   position: relative;
   z-index: 1;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   .project-item {
+    cursor: pointer;
+
     margin-right: 75px;
     max-width: 250px;
     height: fit-content;
@@ -242,7 +270,7 @@ h2 {
   flex-wrap: wrap;
   max-width: 800px;
   margin-left: auto;
-  margin-top: 100px;
+  margin-top: 50px;
   .member-item {
     max-width: 200px;
     margin: 20px 0;
@@ -279,6 +307,9 @@ h2 {
   }
 }
 
+.header-responsive {
+  display: none;
+}
 footer {
   display: flex;
   justify-content: center;
@@ -286,10 +317,37 @@ footer {
     text-align: center;
   }
 }
-
+@media (max-width: 1121px) {
+  .teacher-items {
+    justify-content: center;
+  }
+}
 @media (max-width: 992px) {
+  h2 {
+    &::before {
+      content: "";
+      position: absolute;
+      background: url("../img/arrow.png") left center / contain no-repeat;
+      padding: 40px;
+      left: -40px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+  nav {
+    .nav-link {
+      margin-right: 15px;
+      padding: 5px;
+    }
+  }
+  .screen-1 {
+    background: url("../img/first-screen_resp.png") right center / contain
+      no-repeat;
+  }
   .main-image {
     padding: 120px;
+    margin-left: 15px;
   }
   .teacher-items {
     margin: 0 auto;
@@ -322,7 +380,7 @@ footer {
     .project-item {
       margin: 0 10px;
       width: 100%;
-      max-width: unset;
+      max-width: 300px;
       text-align: center;
       img {
         max-width: 250px;
@@ -351,9 +409,111 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .header-responsive-menu {
+    position: fixed;
+    display: none;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #fcfcfc;
+    z-index: 99999;
+    height: 100vh;
+    nav {
+      display: block;
+      background: none;
+      margin-top: 100px;
+      text-align: center;
+      height: 100vh;
+      box-sizing: border-box;
+      .nav-link {
+        width: 100%;
+        margin: 20px 0;
+        display: block;
+      }
+    }
+  }
+  .header-responsive {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    .menu-button {
+      left: 20px;
+      z-index: 999999;
+      top: 20px;
+      position: fixed;
+      cursor: pointer;
+      width: 50px;
+      span {
+        background: #3a0e59;
+        width: 40px;
+        display: block;
+        position: relative;
+        margin: 5px 0;
+        transition: 0.2s;
+        height: 5px;
+      }
+    }
+    .open {
+      span {
+        &:nth-child(2) {
+          display: none;
+        }
+        &:nth-child(1) {
+          transform: rotate(45deg);
+          top: 4px;
+        }
+        &:nth-child(3) {
+          transform: rotate(-45deg);
+          top: -5px;
+        }
+      }
+    }
+    .logo {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      width: 160px;
+      height: 80px;
+      z-index: 5;
+    }
+  }
+  .header-desktop {
+    display: none;
+  }
   .screen-1 {
     background-position-y: 300px;
     background: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .figures {
+    div {
+      &:nth-child(1) {
+        position: absolute;
+        background: url("../img/arrow.png") left center / contain no-repeat;
+        top: 100px;
+        left: -100px;
+        padding: 100px;
+      }
+      &:nth-child(2) {
+        position: absolute;
+        background: url("../img/arrow.png") left center / contain no-repeat;
+        top: 250px;
+        right: -50px;
+        padding: 60px;
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .screen-1::before {
+    content: "";
+    position: absolute;
+    background: url("../img/arrow.png") left center / contain no-repeat;
+    top: 150px;
+    right: -75px;
+    padding: 100px;
   }
   main {
     display: flex;
@@ -367,9 +527,23 @@ footer {
     background: url("../img/main.png") center center / contain no-repeat;
     padding: 180px;
     margin: 100px 20px 0 20px;
+    position: relative;
+    z-index: 5;
   }
   nav {
     display: none;
+  }
+  footer nav {
+    display: block;
+    .nav-link {
+      width: 100%;
+      display: block;
+      margin: 15px 0;
+    }
+  }
+  .teacher-items .teacher-item {
+    width: 50%;
+    margin-bottom: 20px;
   }
 }
 
@@ -379,9 +553,9 @@ footer {
   }
   .teacher-items {
     .teacher-item {
-      margin: 0 10px;
+      margin: 10px;
       width: 100%;
-      max-width: unset;
+      max-width: 380px;
     }
   }
   .main-content .main-bottom {
